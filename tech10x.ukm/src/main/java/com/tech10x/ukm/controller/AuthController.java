@@ -38,7 +38,7 @@ public class AuthController {
     @PostMapping("/login/otp")
     public ResponseEntity<GenericResponse<Object>> requestOtp(@Valid @RequestBody OtpRequest request) {
         authService.requestOtp(request.getEmail());
-        return ResponseEntity.ok(ResponseUtil.success("OTP sent successfully"));
+        return ResponseEntity.ok(ResponseUtil.success("OTP sent successfully!!"));
     }
 
     /** Logs in with either {@code password} or {@code otp} in the request body - exactly one must be set. */
