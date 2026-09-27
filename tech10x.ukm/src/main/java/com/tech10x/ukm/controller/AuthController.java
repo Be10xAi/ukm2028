@@ -31,14 +31,14 @@ public class AuthController {
     public ResponseEntity<GenericResponse<UserResponse>> register( @Valid @RequestBody RegisterRequest request) {
         UserResponse user = authService.register(request);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ResponseUtil.success(List.of(user), "User registered successfully"));
+                .body(ResponseUtil.success(List.of(user), "User registered"));
     }
 
     /** Sends an OTP to the account's registered email; required before logging in with otp. */
     @PostMapping("/login/otp")
     public ResponseEntity<GenericResponse<Object>> requestOtp(@Valid @RequestBody OtpRequest request) {
         authService.requestOtp(request.getEmail());
-        return ResponseEntity.ok(ResponseUtil.success("OTP sent successfully"));
+        return ResponseEntity.ok(ResponseUtil.success("OTP sent successfully!!"));
     }
 
     /** Logs in with either {@code password} or {@code otp} in the request body - exactly one must be set. */
