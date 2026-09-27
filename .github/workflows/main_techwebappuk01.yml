@@ -26,6 +26,15 @@ jobs:
 
       - name: Build with Maven
         working-directory: ./tech10x.ukm
+        env:
+          DB_URL: ${{ secrets.DB_URL }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          JWT_EXPIRATION: ${{ secrets.JWT_EXPIRATION }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}    
+          OTP_EXPIRATION_MINUTES: ${{ secrets.OTP_EXPIRATION_MINUTES }}
+          MAX_OTP_ALLOW_PER_USER: ${{ secrets.MAX_OTP_ALLOW_PER_USER }}
+          OTP_LENGHT: $ {{ secrets.OTP_LENGTH }}
         run: mvn clean install
 
       - name: Upload artifact for deployment job
