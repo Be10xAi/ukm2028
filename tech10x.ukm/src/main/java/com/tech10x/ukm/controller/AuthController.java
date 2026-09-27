@@ -31,7 +31,7 @@ public class AuthController {
     public ResponseEntity<GenericResponse<UserResponse>> register( @Valid @RequestBody RegisterRequest request) {
         UserResponse user = authService.register(request);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ResponseUtil.success(List.of(user), "User registered"));
+                .body(ResponseUtil.success(List.of(user), "User registered success"));
     }
 
     /** Sends an OTP to the account's registered email; required before logging in with otp. */
