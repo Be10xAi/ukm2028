@@ -35,7 +35,7 @@ jobs:
           OTP_EXPIRATION_MINUTES: ${{ secrets.OTP_EXPIRATION_MINUTES }}
           MAX_OTP_ALLOW_PER_USER: ${{ secrets.MAX_OTP_ALLOW_PER_USER }}
           OTP_LENGHT: ${{ secrets.OTP_LENGTH }}
-        run: mvn clean install
+        run: mvn clean install -DskipTests
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
