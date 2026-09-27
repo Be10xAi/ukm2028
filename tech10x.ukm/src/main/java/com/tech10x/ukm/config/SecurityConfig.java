@@ -46,7 +46,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/v1/ukm/auth/register", "/api/v1/ukm/auth/login",
-                                "/api/v1/ukm/auth/login/otp").permitAll()
+                                "/api/v1/ukm/auth/login/otp","/api/v1/test/**").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 // No HttpSession is created; the JWT carries identity on every request.
