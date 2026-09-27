@@ -36,7 +36,7 @@ public class OtpServiceImpl implements OtpService {
     @Value("${app.otp.length:6}")
     private int otpLength;
 
-    @Value("${app.otp.expiration-minutes:5}")
+    @Value("${app.otp.expiration-minutes}")
     private long otpExpirationMinutes;
 
     @Transactional
