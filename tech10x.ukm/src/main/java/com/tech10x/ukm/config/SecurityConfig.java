@@ -45,8 +45,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/ukm/auth/register", "/api/v1/ukm/auth/login",
-                                "/api/v1/ukm/auth/login/otp").permitAll()
+                        .requestMatchers("/api/v1/ukm/auth/register", "/api/v1/ukm/suppliers/register",
+                                "/api/v1/ukm/auth/login", "/api/v1/ukm/auth/login/otp").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 // No HttpSession is created; the JWT carries identity on every request.
