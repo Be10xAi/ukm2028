@@ -5,6 +5,7 @@ import com.tech10x.ukm.security.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -47,6 +48,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/v1/ukm/auth/register", "/api/v1/ukm/suppliers/register",
                                 "/api/v1/ukm/auth/login", "/api/v1/ukm/auth/login/otp").permitAll()
+                        // Public website browsing: READ-ONLY (GET) and only under /public. Any other
+                        // method on these paths falls through to anyRequest().authenticated().
+                        .requestMatchers(HttpMethod.GET, "/api/v1/ukm/public/**").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 // No HttpSession is created; the JWT carries identity on every request.
