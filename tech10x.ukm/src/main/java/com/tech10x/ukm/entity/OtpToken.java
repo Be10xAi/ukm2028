@@ -38,14 +38,14 @@ public class OtpToken {
     @Column(nullable = false)
     private boolean used = false;
 
+    @Column(name = "no_of_attempt",nullable = false)
+    private int noOfAttempt;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
     @Builder.Default
     @Column(name = "created_by", nullable = false, updatable = false)
     private String createdBy="Admin";
-
-    @Column(name = "no_of_attempt",nullable = false)
-    private int noOfAttempt;
 
     @PrePersist
     void onCreate() {

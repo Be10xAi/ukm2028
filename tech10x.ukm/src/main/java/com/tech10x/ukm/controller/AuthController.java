@@ -7,7 +7,6 @@ import com.tech10x.ukm.dto.response.AuthResponse;
 import com.tech10x.ukm.dto.response.GenericResponse;
 import com.tech10x.ukm.dto.response.UserResponse;
 import com.tech10x.ukm.service.AuthService;
-import com.tech10x.ukm.serviceimpl.AuthServiceImpl;
 import com.tech10x.ukm.utils.ResponseUtil;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +30,7 @@ public class AuthController {
     public ResponseEntity<GenericResponse<UserResponse>> register( @Valid @RequestBody RegisterRequest request) {
         UserResponse user = authService.register(request);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(ResponseUtil.success(List.of(user), "User registered success"));
+                .body(ResponseUtil.success(List.of(user), "User registered"));
     }
 
     /** Sends an OTP to the account's registered email; required before logging in with otp. */
